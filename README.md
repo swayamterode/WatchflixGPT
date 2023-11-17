@@ -1,1 +1,24 @@
-# netflixGPT
+# Project Details
+
+- CRA
+- Setup Tailwind CSS
+- React Router Dom
+- Form Validation
+- `useRef Hook`, `useState Hook`
+- Implement SignIn User API using Firebase
+- Setup Firebase Authentication
+- Setup Store using Redux with userSlice
+  - addUser and removeUser
+- **Bugfix:** Redirect User when login to browse.
+- **Bugfix:** Redirect User back to browse page when user is loged in.
+- Added hardcoded values to `constants.js`
+- Used `TMDB API`
+- Store movies in Redux store.
+- Custom hooks (Makes the UI more clean).
+- Create MoiveSlice (Redux)
+- Fetch Data for trailer video
+- Embedded the Youtube Video (autoplay and mute)
+- GPT Search Feature
+- Multi language Page ✨
+- OpenAI Integration
+  - **NOTE:** OpenAI API does not run on browser directly!
