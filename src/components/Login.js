@@ -14,7 +14,7 @@ const Login = () => {
       <div className="absolute">
         <Header />
         <img
-          className="object-cover fixed w-screen min-h-screen bg-cover bg-center bg-no-repeat"
+          className="object-cover fixed w-screen h-screen"
           src={BG_URL}
           alt="bgimage"
         />
@@ -22,9 +22,9 @@ const Login = () => {
 
       <div>
         <form onSubmit={(e) => e.preventDefault()}
-          className="w-[580px] absolute p-20 mx-auto right-0 left-0 bg-black bg-opacity-80 mt-28 flex-col space-y-5 h-[860px]">
+          className="w-[90%] md:w-1/3 absolute p-6 md:p-20 mx-auto right-0 left-0 bg-black bg-opacity-80 mt-28 flex-col space-y-5 rounded-xl">
           {/* Heading */}
-          <h1 className="text-white text-5xl mb-10">
+          <h1 className="text-white text-3xl md:text-5xl mb-6 md:mb-10">
             {isSignedIn ? "Sign in" : "Sign up"}
           </h1>
           {/* FullName */}
@@ -60,7 +60,7 @@ const Login = () => {
             {suceesMessage}
           </p>
 
-          <p className="pt-4"></p>
+          <p className="md:pt-4"></p>
 
           {/* Button for Sign up and Sign in. */}
           <button
@@ -93,23 +93,18 @@ const Login = () => {
 
           <div className="flex justify-between">
             <input type="checkbox" className="text-[#333] w-6 h-6 rounded-xl" />{" "}
-            <span className="text-[#737373] -ml-48">Remember me</span>
+            <span className="text-[#737373] -ml-20 md:-ml-52">Remember me</span>
             <p className="text-[#737373]">Need help?</p>
           </div>
 
           <p className="text-[#737373] text-xl font-light pt-20">
             {isSignedIn ? "New to Netflix?" : "Already Registered?"}
             <span
-              className="text-white text-xl ml-1 transform scale-100 hover:scale-105 hover:text-red-500 hover:cursor-pointer"
+              className="text-white text-xl ml-2 transform scale-100 hover:scale-105 hover:text-red-500 hover:cursor-pointer"
               onClick={toogleSignInForm}
             >
               {isSignedIn ? "Sign up now." : "Sign in"}
             </span>
-          </p>
-
-          <p className="text-[#737373] w-96">
-            This page is protected by Google reCAPTCHA to ensure you're not a
-            bot.<span className="text-blue-600"> Learn more. </span>
           </p>
         </form>
       </div>

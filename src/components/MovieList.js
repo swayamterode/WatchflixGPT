@@ -9,8 +9,8 @@ import MovieCard from './MovieCard';
  */
 const MovieList = ({ title, movies }) => {
   return (
-    <div className='px-6'>
-      <h1 className='text-2xl font-bold py-6 text-white'>{title}</h1>
+    <div className='px-3.5 md:px-10'>
+      <h1 className='text-md md:text-xl font-bold py-3 px-3 text-white'>{title}</h1>
       <div className='flex overflow-x-scroll'>
         <div className='flex '>
           {movies?.map((movie) => ( //use optional chaining

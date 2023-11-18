@@ -18,17 +18,19 @@ import { AiOutlineInfoCircle } from "react-icons/ai"
 const VideoTitle = ({ title, overview }) => { // passing props ✨
   return (
     <div className="w-screen aspect-video pt-[18%] px-6 md:px-14 absolute text-white bg-gradient-to-r from-black">
-      <h1 className='text-6xl font-bold mb-2'>{title}</h1>
-      <p className='text-xl text-gray-400 w-1/3 mb-6'>{overview}</p>
+      <h1 className='text-lg md:text-6xl  font-bold mb-4 md:mb-2 -mt-14 md:mt-0'>{title}</h1>
+      <p className='text-sm md:text-xl text-gray-400 w-2/3 md:w-1/3 mb-6 hidden md:inline-block'>{overview}</p>
       <div className='flex gap-3'>
-        <button className='bg-white w-36 h-12 rounded-md flex items-center justify-center font-extrabold text-xl text-black hover:bg-opacity-80'>
-          <FaPlay className='mr-2' />
-          Play
+        <button className='bg-white w-16 h-7 md:w-36 md:h-12 rounded-md flex items-center justify-center font-extrabold text-sm md:text-xl text-black hover:bg-opacity-80'>
+          <FaPlay className='mr-2 w-2 md:w-4 md:text-xl' />
+          <span className='text-sm md:text-xl'>Play</span>
         </button>
-        <button className='w-48 h-12 rounded-md flex items-center justify-center text-xl font-extrabold bg-gray-500 bg-opacity-30'>
-          <AiOutlineInfoCircle className='text-white text-3xl mr-2' />
-          More Info
-        </button>
+        <div className='hidden md:inline-block '>
+          <button className='w-36 h-10 md:w-48 md:h-12 rounded-md flex items-center justify-center text-sm md:text-xl font-extrabold bg-gray-500 bg-opacity-30'>
+            <AiOutlineInfoCircle className='text-white text-xl md:text-3xl mr-2' />
+            More Info
+          </button>
+        </div>
       </div>
     </div>
   )

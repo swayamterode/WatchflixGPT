@@ -20,7 +20,7 @@ const GptSearchBar = () => {
     <section>
       <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-sm text-center">
-          <h2 className="mb-4 mt-[10%] text-4xl tracking-tight font-extrabold leading-tight text-gray-900 dark:text-white">
+          <h2 className="mb-4 mt-[20%] md:mt-[10%] text-xlmd:text-4xl tracking-tight font-extrabold leading-tight text-gray-900 dark:text-white">
             {/* Search for your favorite movies, TV shows and more. */}
             {lang[langKey].gptSearchHeading}
           </h2>
@@ -34,7 +34,7 @@ const GptSearchBar = () => {
               </div>
               <input ref={searchText} type="search" className="block w-full p-4 ps-10 text-sm  border rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                 placeholder={lang[langKey].gptSearchPlaceholder} required />
-              <button className="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-red-600 hover:bg-red-700 focus:ring-blue-800"
+              <button className="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-red-600 hover:bg-red-700 focus:ring-red-800"
                 onClick={handleGptSearchClick}>
                 {lang[langKey].search}
               </button>
