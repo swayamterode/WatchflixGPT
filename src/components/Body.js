@@ -1,5 +1,6 @@
 import Login from './Login'
 import Browse from './Browse'
+import ErrorPage from './ErrorPage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 /**
  * Renders the main body of the application, including the router and its routes.
@@ -14,6 +15,14 @@ const Body = () => {
     {
       path: '/browse',
       element: <Browse />
+    },
+    {
+      path: "/error",
+      element: <ErrorPage />
+    },
+    {
+      path: "*",
+      element: <ErrorPage />
     }
   ])
   return (
