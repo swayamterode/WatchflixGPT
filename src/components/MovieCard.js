@@ -8,10 +8,16 @@ import { IMG_CDN_URL } from "../utils/constants";
  */
 const MovieCard = ({ posterPath }) => {
   if (!posterPath) return null;
+
   return (
-    <div className="w-28 md:w-48 flex px-2 mb-2" >
-      <img alt="Movie Card" src={IMG_CDN_URL + posterPath} className="rounded-xl" />
+    <div className="w-28 md:w-48 flex px-2 mb-2 transition-transform transform-gpu group hover:scale-110 duration-300">
+      <img
+        alt="Movie Card"
+        src={IMG_CDN_URL + posterPath}
+        className="rounded-xl w-full h-auto"
+      />
     </div>
   );
 };
+
 export default MovieCard;

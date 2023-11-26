@@ -2,15 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import VideoBackground from "./VideoBackground"
 import VideoTitle from "./VideoTitle"
-
 /**
  * Renders the main container component.
  * @returns {JSX.Element} The main container component.
  */
 const MainContainer = () => {
     const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-    if (!movies) return; // early return
-
+    if (!movies) return; // TODO: Add shimmer
     const mainMovie = movies[0];
     const { original_title, overview, id } = mainMovie;
     return (

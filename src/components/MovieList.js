@@ -12,9 +12,11 @@ const MovieList = ({ title, movies }) => {
     <div className='px-3.5 md:px-10'>
       <h1 className='text-md md:text-xl font-bold py-3 px-3 text-white'>{title}</h1>
       <div className='flex overflow-x-scroll'>
-        <div className='flex '>
-          {movies?.map((movie) => ( //use optional chaining
-            <MovieCard key={movie.id} posterPath={movie.poster_path} />
+        <div className='flex cursor-pointer space-x-3 mt-5'>
+          {movies?.map((movie) => (
+            <div key={movie.id}>
+              <MovieCard posterPath={movie.poster_path} />
+            </div>
           ))}
         </div>
       </div>
