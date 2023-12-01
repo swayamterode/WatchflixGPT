@@ -22,9 +22,9 @@ const Login = () => {
 
       <div>
         <form onSubmit={(e) => e.preventDefault()}
-          className="w-[90%] md:w-1/3 absolute p-6 md:p-20 mx-auto right-0 left-0 bg-black bg-opacity-80 mt-28 flex-col space-y-5 rounded-xl">
+          className="w-[90%] md:w-1/3 absolute p-6 md:p-14 mx-auto right-0 left-0 bg-black bg-opacity-80 mt-48 flex-col space-y-5 rounded-2xl">
           {/* Heading */}
-          <h1 className="text-white text-3xl md:text-5xl mb-6 md:mb-10">
+          <h1 className="text-white text-xl md:text-3xl mb-6 md:mb-2">
             {isSignedIn ? "Sign in" : "Sign up"}
           </h1>
           {/* FullName */}
@@ -60,7 +60,7 @@ const Login = () => {
             {suceesMessage}
           </p>
 
-          <p className="md:pt-4"></p>
+
 
           {/* Button for Sign up and Sign in. */}
           <button
@@ -93,7 +93,7 @@ const Login = () => {
 
           <div className="flex justify-between">
             <input type="checkbox" className="text-[#333] w-6 h-6 rounded-xl" />{" "}
-            <span className="text-[#737373] -ml-20 md:-ml-52">Remember me</span>
+            <span className="text-[#737373] -ml-20 md:-ml-48">Remember me</span>
             <p className="text-[#737373]">Need help?</p>
           </div>
 

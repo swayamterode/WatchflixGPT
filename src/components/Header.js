@@ -11,7 +11,7 @@ const Header = () => {
   const { user, showGptSearch, handleGptSearchClick, handleLanguageChange, handleSignOut } = useHeader();
 
   return (
-    <div className=' fixed z-10 flex-col md:flex-row  px-5 py-3 bg-black/20 backdrop-blur-2xl w-screen flex justify-between'>
+    <div className=' fixed z-10 flex-col md:flex-row  px-5 py-4 md:py-0 bg-black/20 backdrop-blur-2xl w-screen flex justify-between'>
       <div className='flex flex-row justify-between'>
         {user && (
           <select

@@ -7,9 +7,9 @@ const MovieList = ({ title, movies }) => {
   const { isBlackScreenVisible, clickedMovieId, handleMovieID, handleBlackScreenClick, } = useMovieList();
   return (
     <div className='px-3.5 md:px-10'>
-      <h1 className='text-md md:text-xl font-bold py-3 px-3 text-white'>{title}</h1>
+      <h1 className='text-md md:text-xl font-bold md:py-3 md:px-3 text-white pl-2 mt-3'>{title}</h1>
       <div className='flex overflow-x-scroll'>
-        <div className='flex cursor-pointer space-x-3 mt-5'>
+        <div className='flex cursor-pointer space-x-1 mt-3'>
           {movies?.map((movie) => (
             <div key={movie.id} onClick={() => handleMovieID(movie.id)}>
               <MovieCard posterPath={movie.poster_path} />
@@ -20,7 +20,7 @@ const MovieList = ({ title, movies }) => {
       {/* Conditional rendering for the black screen */}
       {isBlackScreenVisible && (
         <div className='fixed top-0 left-0 w-full h-full bg-black z-50'>
-          <div className='absolute top-4 right-4 cursor-pointer text-white text-6xl' onClick={handleBlackScreenClick}>
+          <div className='absolute top-4 right-4 cursor-pointer text-white text-4xl md:text-6xl' onClick={handleBlackScreenClick}>
             <span>&times;</span>
           </div>
           {clickedMovieId && <MovieTrailer movieId={clickedMovieId} />}
