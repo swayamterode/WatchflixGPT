@@ -17,7 +17,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai"
  */
 const VideoTitle = ({ title, overview }) => { // passing props ✨
   return (
-    <div className="w-screen aspect-video pt-[18%] px-6 md:px-14 absolute text-white bg-gradient-to-r from-black">
+    <div className="w-screen aspect-video pt-[18%] md:pt-[15%] px-6 md:px-14 absolute text-white bg-gradient-to-r from-black">
       <h1 className='text-2xl md:text-6xl  font-bold mb-4 md:mb-2 -mt-8 md:mt-0'>{title}</h1>
       <p className='text-sm md:text-xl text-gray-400 w-2/3 md:w-1/3 mb-6 hidden md:inline-block'>{overview}</p>
       <div className='flex gap-3'>

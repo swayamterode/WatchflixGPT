@@ -11,7 +11,6 @@ const useMovieList = () => {
     dispatch(setSelectedMovieId(movieId));
     setIsBlackScreenVisible(true);
     setClickedMovieId(movieId);
-    console.log("Clicked Movie ID:", movieId);
   };
 
   const handleBlackScreenClick = () => {
