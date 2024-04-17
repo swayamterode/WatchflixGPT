@@ -1,24 +1,34 @@
-import React from 'react'
-import { FaPlay } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
-import { GoDotFill } from 'react-icons/go'
-import { FaInfoCircle } from 'react-icons/fa';
+import React from "react";
+import { useState } from "react";
+import { FaPlay } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { GoDotFill } from "react-icons/go";
+import { FaInfoCircle } from "react-icons/fa";
 import { TbBlockquote } from "react-icons/tb";
+import { IoCloseCircle } from "react-icons/io5";
+
 const SelectedMovie = () => {
   const movie = useSelector((store) => store.movies?.selectedMovieDetails);
   const trailer = useSelector((store) => store.movies?.displayMovieTrailer);
+  const [showTrailer, setShowTrailer] = useState(false);
+
   const key = trailer?.key;
-  const trailerVideo = (key) => {
-    window.open(`https://www.youtube.com/watch?v=${key}`, '_blank')
-  }
+  const movieName = movie?.title;
+
+  const closeTrailer = () => {
+    setShowTrailer(false);
+  };
+  const trailerVideo = () => {
+    setShowTrailer(true);
+  };
 
   return (
-    <>
-      <div className='md:mt-[2%] md:m-16 hidden sm:flex absolute flex justify-center items-center'>
+    <div className="h-screen flex items-center max-h-screen z-50">
+      <div className=" sm:flex absolute flex justify-center items-center">
         <div
-          className='bg-gradient-to-br from-black to-transparent rounded-3xl relative'
+          className="bg-gradient-to-br from-black to-transparent relative"
           style={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
             right: 0,
@@ -28,65 +38,91 @@ const SelectedMovie = () => {
         />
         <img
           src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-          alt='movie backdrop'
-          className='bg-no-repeat rounded-3xl relative z-0'
+          alt={movie?.title}
+          className="bg-no-repeat z-0 w-screen h-screen object-cover"
         />
       </div>
 
-      <div className='mt-[15%] m-16 relative container flex flex-col md:flex  md:flex-row justify-center items-center gap-10 mx-auto my-auto z-10'>
-        <img className='w-52 md:w-72 rounded-3xl shadow-2xl transition-transform transform-gpu group hover:scale-110 duration-700 md:ml-20 ' src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`} alt='movie poster' />
-        <div className='flex flex-col mr-80'>
-
-          {/* Title */}
-          <div className=' text-white mx-auto md:mx-0 text-2xl md:text-5xl font-bold -mt-2'>
-            {movie?.title} <span className='font-light'>({movie?.release_date?.slice(0, 4)})</span>
+      <div className="relative container flex flex-col md:flex xl:flex-row mx-auto my-auto justify-center items-center gap-10 z-10">
+        <img
+          className="w-52 md:w-72 xl:w-96 rounded-3xl shadow-2xl transition-transform transform-gpu group hover:scale-110 duration-700"
+          src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
+          alt={movie?.title}
+        />
+        <div className="flex flex-col gap-3 items-center xl:items-start">
+          <div className=" text-white mx-auto md:mx-0 text-2xl md:text-3xl xl:text-6xl font-bold">
+            {movie?.title}{" "}
+            <span className="font-light">
+              ({movie?.release_date?.slice(0, 4)})
+            </span>
           </div>
 
-          {/* Genre */}
-          <div className='flex flex-row justify-center md:justify-start mt-2 md:mx-0 text-sm m-2 '>
-            <div className='text-white text-md font-semibold ml-1'>
+          <div className="flex flex-row justify-center md:justify-start md:mx-0 text-sm">
+            <div className="text-white text-md font-semibold">
               {movie?.release_date}
             </div>
-            <GoDotFill className='text-white text-sm my-auto ml-2 md' />
-            <div className='text-white mx-2 font-semibold'>
-              {movie?.genres?.map((genre) => genre.name).join(', ')}
+            <GoDotFill className="text-white text-sm my-auto" />
+            <div className="text-white font-semibold">
+              {movie?.genres
+                ?.slice(0, 2)
+                .map((genre) => genre.name)
+                .join(", ")}
             </div>
-            <GoDotFill className='text-white text-sm my-auto mr-2' />
+            <GoDotFill className="text-white text-sm my-auto " />
 
-            <div className='text-white font-semibold'>
-              {movie?.runtime} min
+            <div className="text-white font-semibold">{movie?.runtime} min</div>
+          </div>
+
+          <div
+            className="cursor-pointer w-15 h-7 sm:w-36 sm:h-12 border rounded-md flex items-center justify-center font-bold bg-[#3c3c3c7d] border-[#3c3c3c]"
+            onClick={() => trailerVideo(key)}
+          >
+            <FaPlay className="mr-2 w-2 md:w-3 text-white" />
+            <span className="text-sm md:text-xl text-white"></span>
+            <span className="text-sm md:text-xl text-white">Play Trailer</span>
+          </div>
+          {showTrailer && (
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+              <div className="absolute inset-0 bg-black" />
+              <div className="relative z-50">
+                <button
+                  className="absolute top-16 right-16 text-white"
+                  onClick={closeTrailer}
+                >
+                  <IoCloseCircle className="text-4xl z-[200px]" />
+                </button>
+                <iframe
+                  className="w-screen h-screen"
+                  src={
+                    "https://www.youtube-nocookie.com/embed/" +
+                    key +
+                    "?autoplay=1&mute=0&controls=0&showinfo=0&modestbranding=1&loop=1&vq=hd720"
+                  }
+                  title={movieName}
+                  allow="accelerometer; autoplay;"
+                />
+              </div>
+            </div>
+          )}
+          <div className="flex flex-row items-center gap-3">
+            <TbBlockquote className="text-white font-bold  text-sm md:text-lg" />
+            <div className="italic text-gray-300 text-md md:text-xl md:mx-0 font-light">
+              {movie?.tagline}
             </div>
           </div>
 
-          {/* Play trailer */}
-          <div className='cursor-pointer mt-2 w-15 h-7 sm:w-36 sm:h-12 rounded-md flex items-center justify-center font-extrabold text-sm sm:text-xl text-black'>
-            <FaPlay className='mr-2 w-2 md:w-3 text-white' />
-            <span className='text-sm md:text-xl text-white'>
-        </span>
-            <span className='text-sm md:text-xl text-white' onClick={() => trailerVideo(key)}>Play Trailer</span>
-          </div>
-
-          {/* Tagline */}
-          <div className="flex flex-row items-center">
-            <TbBlockquote className='text-white font-bold mt-2 ml-4 md:ml-1 text-sm md:text-lg' />
-            <div className='italic text-gray-300 text-md md:text-xl md:mx-0 mt-2 font-light px-2 '> {movie?.tagline}</div>
-          </div>
-
-
-          <div className='flex flex-row items-start mt-1'>
-            <div className='flex items-center justify-start text-xl sm:text-2xl text-white font-semibold my-2 px-3 sm:px-0'>
-              <FaInfoCircle className='ml-1 text-white text-sm md:text-lg' />
+          <div className="flex flex-row items-start w-3/4 gap-3">
+            <div className="flex items-center justify-start text-xl text-white font-semibold my-2 px-3 sm:px-0">
+              <FaInfoCircle className=" text-white text-sm md:text-lg" />
             </div>
-            <div className='text-white mt-1 md:mx-2 mr-30'>
+            <div className="text-white 2xl:text-2xl font-light">
               {movie?.overview}
             </div>
           </div>
-
         </div>
-
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default SelectedMovie
+export default SelectedMovie;

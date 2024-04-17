@@ -10,12 +10,13 @@ const MovieCard = ({ posterPath }) => {
   if (!posterPath) return null;
 
   return (
-    <div className="w-24 md:w-60 flex pr-1 md:pr-0 px-0 md:px-4 mb-2 transition-transform transform-gpu group hover:scale-110 duration-300">
+    <div className="relative overflow-hidden group mx-1">
       <img
         alt="Movie Card"
         src={IMG_CDN_URL + posterPath}
-        className="rounded-xl w-full h-auto"
+        className="rounded-lg object-contain"
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/15 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
     </div>
   );
 };
