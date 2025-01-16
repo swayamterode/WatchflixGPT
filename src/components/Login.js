@@ -98,7 +98,7 @@ const Login = () => {
           </div>
 
           <p className="text-[#737373] text-xl font-light pt-20">
-            {isSignedIn ? "New to Netflix?" : "Already Registered?"}
+            {isSignedIn ? "New to Watchflix?" : "Already Registered?"}
             <span
               className="text-white text-xl ml-2 transform scale-100 hover:scale-105 hover:text-red-500 hover:cursor-pointer"
               onClick={toogleSignInForm}
